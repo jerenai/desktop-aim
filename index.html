@@ -6,49 +6,133 @@
 <title>Aim Trainer - Desktop FPS Aim Practice</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 100%; height: 100%; }
+html, body { width: 100%; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #0d1117; color: #c9d1d9;
-  display: flex; align-items: center; justify-content: center;
-  min-height: 100vh;
+  display: flex; justify-content: center;
 }
-.container {
-  text-align: center;
-  padding: 40px 24px;
-  max-width: 560px;
-}
-h1 { font-size: 36px; margin-bottom: 6px; color: #fff; font-weight: 700; }
-.version { font-size: 14px; color: #58a6ff; margin-bottom: 24px; }
-.desc { font-size: 15px; color: #8b949e; line-height: 1.8; margin-bottom: 28px; }
-.features { text-align: left; display: inline-block; margin-bottom: 28px; list-style: none; }
-.features li { margin: 6px 0; font-size: 14px; color: #c9d1d9; }
-.features li::before { content: "+ "; color: #238636; }
+.wrap { max-width: 700px; padding: 48px 24px 80px; }
+h1 { font-size: 36px; color: #fff; margin-bottom: 4px; }
+.version { font-size: 14px; color: #58a6ff; margin-bottom: 16px; }
+.desc { font-size: 15px; color: #8b949e; line-height: 1.7; margin-bottom: 24px; }
 .btn {
   display: inline-block; padding: 16px 44px; background: #238636; color: #fff;
   text-decoration: none; border-radius: 8px; font-size: 17px; font-weight: 700;
-  transition: background 0.15s; border: none;
+  transition: background 0.15s;
 }
 .btn:hover { background: #2ea043; }
-.platforms { margin-top: 14px; font-size: 12px; color: #484f58; }
-.footer { margin-top: 48px; font-size: 11px; color: #30363d; }
+.platforms { margin: 10px 0 48px; font-size: 12px; color: #484f58; }
+
+h2 { font-size: 22px; color: #fff; margin: 36px 0 12px; border-bottom: 1px solid #21262d; padding-bottom: 6px; }
+h3 { font-size: 16px; color: #e6edf3; margin: 20px 0 8px; }
+p { font-size: 14px; color: #8b949e; line-height: 1.8; margin-bottom: 12px; }
+ul { margin: 8px 0 20px 20px; }
+li { font-size: 14px; color: #8b949e; line-height: 1.8; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
+th, td { border: 1px solid #21262d; padding: 8px 12px; text-align: left; }
+th { background: #161b22; color: #e6edf3; }
+td { color: #8b949e; }
+code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e6edf3; }
+strong { color: #e6edf3; }
+.footer { margin-top: 60px; font-size: 11px; color: #30363d; text-align: center; }
 </style>
 </head>
 <body>
-<div class="container">
-  <h1>Aim Trainer</h1>
-  <p class="version">Version 2.0.0</p>
-  <p class="desc">Transparent overlay desktop app for FPS aim training.<br>Practice while you work.</p>
-  <ul class="features">
-    <li>Transparent floating window, drag to resize</li>
-    <li>Random targets with configurable size & color</li>
-    <li>Real-time HPM, accuracy & reaction time stats</li>
-    <li>WASD canvas movement + reaction time tester</li>
-    <li>VIP unlock: Hover Mode, no ads</li>
-  </ul>
-  <a class="btn" href="Desktop%20Aim%20Trainer%20Setup%202.0.0.exe">Download for Windows</a>
-  <p class="platforms">Windows 10+ &middot; macOS coming soon</p>
-  <p class="footer">Aim Trainer &copy; 2026</p>
+<div class="wrap">
+
+<h1>Aim Trainer</h1>
+<p class="version">Version 2.0.0</p>
+<p class="desc">Transparent overlay desktop app for FPS aim training. Practice while you work.</p>
+
+<a class="btn" href="Desktop%20Aim%20Trainer%20Setup%202.0.0.exe">Download for Windows</a>
+<p class="platforms">Windows 10+ &middot; 82 MB &middot; macOS coming soon</p>
+
+<h2>Quick Start</h2>
+<ol>
+<li>Install and launch — a <strong>transparent window</strong> floats on your desktop</li>
+<li><strong>Click the red dots</strong> to hit them — new dots spawn randomly</li>
+<li>Drag the window edges to resize freely</li>
+<li>Watch your stats update in real time at the top</li>
+</ol>
+
+<h2>Controls</h2>
+<table>
+<tr><th>Key / Action</th><th>Function</th></tr>
+<tr><td><strong>Left Click</strong></td><td>Shoot / hit target</td></tr>
+<tr><td><strong>W A S D</strong></td><td>Move the canvas (hold to move continuously)</td></tr>
+<tr><td><strong>Drag window edge</strong></td><td>Resize the training area</td></tr>
+<tr><td><strong>V</strong> (top-right)</td><td>Open VIP panel</td></tr>
+<tr><td><strong>Gear icon</strong></td><td>Open settings</td></tr>
+<tr><td><strong>-</strong> (top-right)</td><td>Minimize</td></tr>
+<tr><td><strong>X</strong> (top-right)</td><td>Close app</td></tr>
+</table>
+
+<h2>Modes</h2>
+
+<h3>Normal Mode (default)</h3>
+<p>Click targets to hit. Reaction time measured from target spawn to click.</p>
+
+<h3>Hover Mode <code>(VIP only)</code></h3>
+<p>Move your cursor over a target — no click needed. Stats are tracked separately from Normal mode. Toggle in Settings after unlocking VIP.</p>
+
+<h2>Stats Bar</h2>
+<table>
+<tr><th>Metric</th><th>Description</th></tr>
+<tr><td><strong>Hits/min</strong></td><td>Hits in the last 60 seconds (sliding window)</td></tr>
+<tr><td><strong>Accuracy</strong></td><td>Hit rate in the last 60 seconds</td></tr>
+<tr><td><strong>Total Hits</strong></td><td>Lifetime hit counter</td></tr>
+<tr><td><strong>Reaction</strong></td><td>Average reaction time of recent hits</td></tr>
+<tr><td><strong>Best</strong></td><td>Best records per difficulty (3+ hits required)</td></tr>
+</table>
+
+<h2>Reaction Tester</h2>
+<p>The small circle in the stats bar is a standalone reaction tester:</p>
+<ol>
+<li>Click the dot → it fades, text shows <code>Waiting...</code></li>
+<li>After a random delay (0.5–7.5s) → dot lights up, text shows <code>Click!</code></li>
+<li>Click again → shows your reaction time, best, and 10-trial average</li>
+<li>Over 1000ms = timeout, resets automatically</li>
+</ol>
+
+<h2>Settings</h2>
+<table>
+<tr><th>Setting</th><th>Default</th><th>Range</th></tr>
+<tr><td>Target Count</td><td>1</td><td>1–10</td></tr>
+<tr><td>Difficulty</td><td>Medium</td><td>Easy / Medium / Hard / Extreme</td></tr>
+<tr><td>Target Color</td><td>Red</td><td>Color picker</td></tr>
+<tr><td>Window Opacity</td><td>70%</td><td>10–100%</td></tr>
+<tr><td>Target Opacity</td><td>95%</td><td>10–100%</td></tr>
+<tr><td>Crosshair</td><td>Crosshair</td><td>Crosshair / Default / None</td></tr>
+<tr><td>Canvas Speed</td><td>5</td><td>1–20</td></tr>
+<tr><td>Always on Top</td><td>On</td><td>Toggle</td></tr>
+<tr><td>Show Stats</td><td>On</td><td>Toggle</td></tr>
+</table>
+
+<h3>Difficulty Sizes</h3>
+<table>
+<tr><th>Level</th><th>Target Size</th></tr>
+<tr><td>Easy</td><td>40–60 px</td></tr>
+<tr><td>Medium</td><td>25–40 px</td></tr>
+<tr><td>Hard</td><td>15–25 px</td></tr>
+<tr><td>Extreme</td><td>8–15 px</td></tr>
+</table>
+
+<h2>VIP</h2>
+<ul>
+<li><strong>Hover Mode</strong>: cursor touch = hit, no click needed</li>
+<li><strong>Permanent ad removal</strong></li>
+</ul>
+<p>Redeem a code via the <strong>V</strong> button in the top-right corner.</p>
+
+<h2>Auto Update</h2>
+<p>When a new version is available, an <strong>up arrow</strong> appears top-left. Click to download and install.</p>
+
+<h2>Privacy</h2>
+<p>All data is stored locally. No analytics, no tracking.</p>
+
+<p class="footer">Aim Trainer &copy; 2026 &middot; <a href="https://github.com/jerenai/desktop-aim" style="color:#484f58;">GitHub</a></p>
+
 </div>
 </body>
 </html>
