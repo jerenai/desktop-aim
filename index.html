@@ -6,13 +6,23 @@
 <title>Aim Trainer - Desktop FPS Aim Practice</title>
 <style>
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html, body { width: 100%; }
 body {
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   background: #0d1117; color: #c9d1d9;
-  display: flex; justify-content: center;
+  min-height: 100vh;
 }
-.wrap { max-width: 700px; padding: 48px 24px 80px; }
+.lang-bar {
+  position: fixed; top: 0; right: 0; padding: 12px 20px; z-index: 10;
+  display: flex; gap: 6px;
+}
+.lang-btn {
+  background: #21262d; color: #8b949e; border: 1px solid #30363d;
+  padding: 4px 12px; border-radius: 6px; font-size: 12px; cursor: pointer;
+  transition: all 0.15s;
+}
+.lang-btn:hover { color: #c9d1d9; border-color: #58a6ff; }
+.lang-btn.active { background: #1f6feb; color: #fff; border-color: #1f6feb; }
+.wrap { max-width: 700px; margin: 0 auto; padding: 48px 24px 80px; }
 h1 { font-size: 36px; color: #fff; margin-bottom: 4px; }
 .version { font-size: 14px; color: #58a6ff; margin-bottom: 16px; }
 .desc { font-size: 15px; color: #8b949e; line-height: 1.7; margin-bottom: 24px; }
@@ -23,11 +33,10 @@ h1 { font-size: 36px; color: #fff; margin-bottom: 4px; }
 }
 .btn:hover { background: #2ea043; }
 .platforms { margin: 10px 0 48px; font-size: 12px; color: #484f58; }
-
 h2 { font-size: 22px; color: #fff; margin: 36px 0 12px; border-bottom: 1px solid #21262d; padding-bottom: 6px; }
 h3 { font-size: 16px; color: #e6edf3; margin: 20px 0 8px; }
 p { font-size: 14px; color: #8b949e; line-height: 1.8; margin-bottom: 12px; }
-ul { margin: 8px 0 20px 20px; }
+ol, ul { margin: 8px 0 20px 20px; }
 li { font-size: 14px; color: #8b949e; line-height: 1.8; }
 table { width: 100%; border-collapse: collapse; margin: 12px 0 20px; font-size: 13px; }
 th, td { border: 1px solid #21262d; padding: 8px 12px; text-align: left; }
@@ -36,11 +45,20 @@ td { color: #8b949e; }
 code { background: #161b22; padding: 2px 6px; border-radius: 4px; font-size: 13px; color: #e6edf3; }
 strong { color: #e6edf3; }
 .footer { margin-top: 60px; font-size: 11px; color: #30363d; text-align: center; }
+.hidden { display: none; }
 </style>
 </head>
 <body>
+
+<div class="lang-bar">
+  <button class="lang-btn active" onclick="switchLang('en')">EN</button>
+  <button class="lang-btn" onclick="switchLang('zh')">中文</button>
+</div>
+
 <div class="wrap">
 
+<!-- ENGLISH -->
+<div id="lang-en">
 <h1>Aim Trainer</h1>
 <p class="version">Version 2.0.0</p>
 <p class="desc">Transparent overlay desktop app for FPS aim training. Practice while you work.</p>
@@ -69,12 +87,10 @@ strong { color: #e6edf3; }
 </table>
 
 <h2>Modes</h2>
-
 <h3>Normal Mode (default)</h3>
 <p>Click targets to hit. Reaction time measured from target spawn to click.</p>
-
 <h3>Hover Mode <code>(VIP only)</code></h3>
-<p>Move your cursor over a target — no click needed. Stats are tracked separately from Normal mode. Toggle in Settings after unlocking VIP.</p>
+<p>Move your cursor over a target — no click needed. Stats are tracked separately. Toggle in Settings after unlocking VIP.</p>
 
 <h2>Stats Bar</h2>
 <table>
@@ -87,11 +103,10 @@ strong { color: #e6edf3; }
 </table>
 
 <h2>Reaction Tester</h2>
-<p>The small circle in the stats bar is a standalone reaction tester:</p>
 <ol>
 <li>Click the dot → it fades, text shows <code>Waiting...</code></li>
-<li>After a random delay (0.5–7.5s) → dot lights up, text shows <code>Click!</code></li>
-<li>Click again → shows your reaction time, best, and 10-trial average</li>
+<li>After random delay (0.5–7.5s) → dot lights up, text shows <code>Click!</code></li>
+<li>Click again → shows reaction time, best, and 10-trial average</li>
 <li>Over 1000ms = timeout, resets automatically</li>
 </ol>
 
@@ -130,9 +145,111 @@ strong { color: #e6edf3; }
 
 <h2>Privacy</h2>
 <p>All data is stored locally. No analytics, no tracking.</p>
+</div>
+
+<!-- CHINESE -->
+<div id="lang-zh" class="hidden">
+<h1>Aim Trainer</h1>
+<p class="version">Version 2.0.0</p>
+<p class="desc">透明悬浮桌面 FPS 瞄准训练工具，边工作边练习。</p>
+
+<a class="btn" href="Desktop%20Aim%20Trainer%20Setup%202.0.0.exe">下载 Windows 版</a>
+<p class="platforms">Windows 10+ &middot; 82 MB &middot; macOS 即将推出</p>
+
+<h2>快速开始</h2>
+<ol>
+<li>安装并启动 — <strong>透明窗口</strong>悬停在桌面上方</li>
+<li><strong>点击红点</strong>进行命中 — 新点随机生成</li>
+<li>拖拽窗口边缘自由调整大小</li>
+<li>顶部实时查看统计数据</li>
+</ol>
+
+<h2>键位操作</h2>
+<table>
+<tr><th>按键 / 操作</th><th>功能</th></tr>
+<tr><td><strong>鼠标左键</strong></td><td>射击 / 命中目标</td></tr>
+<tr><td><strong>W A S D</strong></td><td>移动画布（长按持续移动）</td></tr>
+<tr><td><strong>拖拽窗口边缘</strong></td><td>调整训练区域大小</td></tr>
+<tr><td><strong>V</strong>（右上角）</td><td>打开 VIP 面板</td></tr>
+<tr><td><strong>齿轮图标</strong></td><td>打开设置</td></tr>
+<tr><td><strong>-</strong>（右上角）</td><td>最小化</td></tr>
+<tr><td><strong>X</strong>（右上角）</td><td>关闭应用</td></tr>
+</table>
+
+<h2>模式</h2>
+<h3>普通模式（默认）</h3>
+<p>点击目标命中。反应时间从目标生成到点击计算。</p>
+<h3>悬停模式 <code>(VIP 专属)</code></h3>
+<p>光标移到目标上即命中，无需点击。统计数据与普通模式分开记录。解锁 VIP 后在设置中开启。</p>
+
+<h2>统计栏</h2>
+<table>
+<tr><th>指标</th><th>说明</th></tr>
+<tr><td><strong>命中/分</strong></td><td>近 60 秒内的命中次数（滑动窗口）</td></tr>
+<tr><td><strong>命中率</strong></td><td>近 60 秒内的命中率</td></tr>
+<tr><td><strong>总命中</strong></td><td>累计命中次数</td></tr>
+<tr><td><strong>反应</strong></td><td>近期命中的平均反应时间</td></tr>
+<tr><td><strong>最佳</strong></td><td>各难度最高记录（需 3 次以上命中）</td></tr>
+</table>
+
+<h2>反应测试</h2>
+<ol>
+<li>点击统计栏中的小圆点 → 褪色，显示 <code>等待...</code></li>
+<li>随机延迟（0.5–7.5 秒）后 → 点亮为目标颜色，显示 <code>点击!</code></li>
+<li>再次点击 → 显示本次反应时间、最佳和近 10 次平均</li>
+<li>超过 1000ms = 超时，自动重置</li>
+</ol>
+
+<h2>设置</h2>
+<table>
+<tr><th>设置</th><th>默认</th><th>范围</th></tr>
+<tr><td>目标数量</td><td>1</td><td>1–10</td></tr>
+<tr><td>难度</td><td>Medium</td><td>Easy / Medium / Hard / Extreme</td></tr>
+<tr><td>目标颜色</td><td>红色</td><td>颜色选择器</td></tr>
+<tr><td>界面透明度</td><td>70%</td><td>10–100%</td></tr>
+<tr><td>目标透明度</td><td>95%</td><td>10–100%</td></tr>
+<tr><td>准星</td><td>十字准星</td><td>十字准星 / 默认 / 无</td></tr>
+<tr><td>画布移动速度</td><td>5</td><td>1–20</td></tr>
+<tr><td>窗口置顶</td><td>开</td><td>开关</td></tr>
+<tr><td>显示统计</td><td>开</td><td>开关</td></tr>
+</table>
+
+<h3>难度对应尺寸</h3>
+<table>
+<tr><th>难度</th><th>目标尺寸</th></tr>
+<tr><td>Easy</td><td>40–60 px</td></tr>
+<tr><td>Medium</td><td>25–40 px</td></tr>
+<tr><td>Hard</td><td>15–25 px</td></tr>
+<tr><td>Extreme</td><td>8–15 px</td></tr>
+</table>
+
+<h2>VIP</h2>
+<ul>
+<li><strong>悬停模式</strong>：光标触碰即命中，无需点击</li>
+<li><strong>永久去除广告</strong></li>
+</ul>
+<p>通过右上角 <strong>V</strong> 按钮输入兑换码解锁。</p>
+
+<h2>自动更新</h2>
+<p>有新版本时左上角出现 <strong>向上箭头</strong>，点击下载安装。</p>
+
+<h2>隐私</h2>
+<p>所有数据存储在本地。无分析，无追踪。</p>
+</div>
 
 <p class="footer">Aim Trainer &copy; 2026 &middot; <a href="https://github.com/jerenai/desktop-aim" style="color:#484f58;">GitHub</a></p>
 
 </div>
+
+<script>
+function switchLang(lang) {
+  document.getElementById('lang-en').classList.toggle('hidden', lang !== 'en');
+  document.getElementById('lang-zh').classList.toggle('hidden', lang !== 'zh');
+  document.querySelectorAll('.lang-btn').forEach(function(b) {
+    b.classList.toggle('active', b.textContent.trim() === (lang === 'en' ? 'EN' : '中文'));
+  });
+}
+</script>
+
 </body>
 </html>
